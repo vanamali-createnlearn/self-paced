@@ -1,0 +1,5 @@
+local prompt = script.Parent
+
+prompt.Triggered:Connect(function(player)
+	print("The prompt was clicked!")
+end)
