@@ -1,0 +1,5 @@
+local prompt = script.Parent
+
+prompt.Triggered:Connect(function(player)
+	game:GetService("Chat"):Chat(prompt.Parent.Parent.Head, "Hello there!")
+end)
