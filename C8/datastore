@@ -1,17 +1,8 @@
-local DataStoreService = game:GetService("DataStoreService")
-local dataStore = DataStoreService:GetDataStore("PlayerData")
+local Players = game:GetService("Players")
 
-game.Players.PlayerAdded:Connect(function(player)
+Players.PlayerAdded:Connect(function(player)
 	local leaderstats = player:WaitForChild("leaderstats")
-	local coins = leaderstats.Coins
 	local checkpoints = leaderstats.Checkpoints
-
-	local data = dataStore:GetAsync(player.UserId)
-
-	if data then
-		coins.Value = data.Coins
-		checkpoints.Value = data.Checkpoints
-	end
 
 	player.CharacterAdded:Connect(function(character)
 		local checkpoint = workspace:FindFirstChild("Checkpoint" .. checkpoints.Value)
@@ -20,17 +11,4 @@ game.Players.PlayerAdded:Connect(function(player)
 			character:MoveTo(checkpoint.Position)
 		end
 	end)
-end)
-
-game.Players.PlayerRemoving:Connect(function(player)
-	local leaderstats = player.leaderstats
-	local coins = leaderstats.Coins
-	local checkpoints = leaderstats.Checkpoints
-
-	local data = {
-		Coins = coins.Value,
-		Checkpoints = checkpoints.Value
-	}
-
-	dataStore:SetAsync(player.UserId, data)
 end)
