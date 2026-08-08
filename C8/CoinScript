@@ -1,0 +1,13 @@
+local part = script.Parent
+
+part.Touched:Connect(function(hit)
+	local player = game.Players:GetPlayerFromCharacter(hit.Parent)
+
+	if player then
+		local leaderstats = player.leaderstats
+		local coins = leaderstats.Coins
+
+		coins.Value = coins.Value + 1
+		part:Destroy()
+	end
+end)
