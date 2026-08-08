@@ -1,5 +1,8 @@
 local prompt = script.Parent
+local npc = prompt.Parent
+local head = npc.Head
+local message = "Hello there!"
 
 prompt.Triggered:Connect(function(player)
-	game:GetService("Chat"):Chat(prompt.Parent.Parent.Head, "Hello there!")
+	game:GetService("Chat"):Chat(head, message)
 end)
