@@ -12,6 +12,14 @@ game.Players.PlayerAdded:Connect(function(player)
 		coins.Value = data.Coins
 		checkpoints.Value = data.Checkpoints
 	end
+
+	player.CharacterAdded:Connect(function(character)
+		local checkpoint = workspace:FindFirstChild("Checkpoint" .. checkpoints.Value)
+
+		if checkpoint then
+			character:MoveTo(checkpoint.Position)
+		end
+	end)
 end)
 
 game.Players.PlayerRemoving:Connect(function(player)
