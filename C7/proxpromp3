@@ -1,0 +1,12 @@
+local prompt = script.Parent
+
+prompt.Triggered:Connect(function(player)
+	local character = player.Character
+	local humanoid = character.Humanoid
+
+	humanoid.WalkSpeed = 32
+
+	wait(4)
+
+	humanoid.WalkSpeed = 16
+end
