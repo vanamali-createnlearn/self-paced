@@ -5,6 +5,10 @@ Players.PlayerAdded:Connect(function(player)
 	local checkpoints = leaderstats.Checkpoints
 
 	player.CharacterAdded:Connect(function(character)
+		if checkpoints.Value == 0 then
+			return
+		end
+
 		local checkpoint = workspace:FindFirstChild("Checkpoint" .. checkpoints.Value)
 
 		if checkpoint then
